@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Header from "./Header";
 import Content from "./Content";
 
 function App() {
   return (
-    <Fragment>
+    <>
       <Header />
       <Content />
-    </Fragment>
+    </>
   );
 }
 

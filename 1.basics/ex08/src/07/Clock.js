@@ -7,7 +7,7 @@ function Clock(props) {
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
 
-  const htmls =
+  const html =
     "<span>" +
     ("0" + (hours > 12 ? hours - 12 : hours)).slice(-2) +
     " : " +
@@ -24,7 +24,7 @@ function Clock(props) {
     // 으로 렌더링하는 작업은 금지하고 있지만,
     // XSS(Cross-Site-Scripting) 보호기능을 끄고 사용할 수 있다.
     //
-    <div dangerouslySetInnerHTML={{ __html: htmls }} />
+    <div dangerouslySetInnerHTML={{ __html: html }} />
   );
 }
 
