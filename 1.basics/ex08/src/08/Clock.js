@@ -24,7 +24,7 @@ function Clock() {
       {" : "}
       {/*
         comment03: JSX는 HTML이 아니다!!!
-        <!-- --> HTML 주석은 사용할 수 없다.
+        <!-- --> HTML 주석은 사용할 수 없다. 
        */}
       {("0" + minutes).slice(-2)}
       {" : "}
