@@ -1,12 +1,10 @@
 import React from "react";
-import styles from "./assets/css/styles.css";
+import styles from "./assets/css/SearchBar.css";
 
-function Searchbar() {
+export default function SearchBar() {
   return (
-    <div className={styles.Searchbar}>
-      찾기: <input type="text" placeholder="search" />
+    <div className={styles.SearchBar}>
+      <input type="text" placeholder="찾기" />
     </div>
   );
 }
-
-export default Searchbar;
