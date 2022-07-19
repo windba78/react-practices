@@ -13,11 +13,9 @@ export default class extends Component {
     return (
       <div>
         <button
-          onClick={(e) => {
-            this.setState({
-              val: this.state.val + this.state.step,
-            });
-          }}
+          onClick={(e) =>
+            this.setState({ val: this.state.val + this.state.step })
+          }
         >
           <strong>+</strong>
         </button>{" "}
