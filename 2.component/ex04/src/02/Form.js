@@ -1,18 +1,32 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import "./assets/Form.css";
 
 export default function Form() {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("male");
+
   const onChangeNameInput = (e) => {
     // setName(e.target.value);
     // 10자 제한
     setName(e.target.value.substr(0, 10));
   };
 
-  const [email, setEmail] = useState("");
   const onChangeEmailInput = (e) => {
     setEmail(e.target.value);
+    // check email format(account@mysite.com)
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+    setValidEmail(re.test(e.target.value));
   };
+
+  const onChangeInputGender = (e) => setGender(e.target.value);
 
   return (
     <form id="joinForm" name="joinForm" method="post" action="/do/not/post">
@@ -24,7 +38,6 @@ export default function Form() {
         value={name}
         onChange={onChangeNameInput}
       />
-
       <label htmlFor="email">이메일</label>
       <input
         id="email"
@@ -33,10 +46,25 @@ export default function Form() {
         value={email}
         onChange={onChangeEmailInput}
       />
-
+      {email === "" ? null : validEmail ? (
+        <FontAwesomeIcon
+          icon={faCheckCircle}
+          style={{ fontSize: 16, color: "blue" }}
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faTimesCircle}
+          style={{ fontSize: 16, color: "red" }}
+        />
+      )}
       <label htmlFor="password">패스워드</label>
-      <input id="password" name="password" type="password" value={""} />
-
+      <input
+        id="password"
+        name="password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <fieldset>
         <legend>성별</legend>
         <label>여</label>{" "}
@@ -44,17 +72,18 @@ export default function Form() {
           type="radio"
           name="gender"
           value={"female"}
-          defaultChecked={true}
+          checked={gender === "female"}
+          onChange={onChangeInputGender}
         />
         <label>남</label>{" "}
         <input
           type="radio"
           name="gender"
           value={"male"}
-          defaultChecked={false}
+          checked={gender === "male"}
+          onChange={onChangeInputGender}
         />
       </fieldset>
-
       <label htmlFor="birthYear">생년</label>
       <select id="birthYear">
         <option value="1984">1984년</option>
@@ -65,10 +94,8 @@ export default function Form() {
         <option value="1989">1989년</option>
         <option value="1990">1990년</option>
       </select>
-
       <label htmlFor="birthYear">자기소개</label>
       <textarea value={""} />
-
       <fieldset>
         <legend>약관동의</legend>
         <input
@@ -80,7 +107,6 @@ export default function Form() {
         />
         <label>서비스 약관에 동의합니다.</label>
       </fieldset>
-
       <input type="submit" value="가입" />
     </form>
   );
