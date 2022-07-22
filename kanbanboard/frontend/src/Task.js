@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./assets/scss/Task.scss";
 
 export default function Task({ no, name, done, notifyChangeTaskDone }) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(done);
 
   return (
     <li className={styles.Task}>
