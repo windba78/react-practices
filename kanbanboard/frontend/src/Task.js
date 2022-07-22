@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./assets/css/Task.css";
+import styles from "./assets/scss/Task.scss";
 
 export default function Task({ no, name, done, notifyChangeTaskDone }) {
   return (

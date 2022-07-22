@@ -1,6 +1,6 @@
 import React from "react";
 import KanbanBoard from "./KanbanBoard";
-import "./assets/css/App.css";
+import "./assets/scss/App.scss";
 
 const App = () => {
   return (

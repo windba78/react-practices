@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Task from "./Task";
-import styles from "./assets/css/TaskList.css";
+import styles from "./assets/scss/TaskList.scss";
 
 export default function TaskList({ tasks }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./assets/css/KanbanBoard.css";
+import styles from "./assets/scss/KanbanBoard.scss";
 import CardList from "./CardList";
 import cards from "./assets/json/data.json";
 
