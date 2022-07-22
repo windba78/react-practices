@@ -1,10 +1,10 @@
 import React from "react";
-import styles from "./assets/css/App.css";
 import KanbanBoard from "./KanbanBoard";
+import "./assets/css/App.css";
 
 const App = () => {
   return (
-    <div id={styles.App}>
+    <div id={"App"}>
       <KanbanBoard />
     </div>
   );

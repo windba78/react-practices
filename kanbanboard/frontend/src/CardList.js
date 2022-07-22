@@ -1,16 +1,19 @@
 import React from "react";
-import styles from "./assets/css/CardList.css";
+import PropTypes from "prop-types";
 import Card from "./Card";
+import styles from "./assets/css/CardList.css";
 
-function CardList({ title, cards }) {
+export default function CardList({ title, cards }) {
   return (
     <div className={styles.CardList}>
       <h1>{title}</h1>
       {cards.map((card) => (
         <Card
           key={card.no}
+          no={card.no}
           title={card.title}
           description={card.description}
+          status={card.status}
           tasks={card.tasks}
         />
       ))}
@@ -18,4 +21,7 @@ function CardList({ title, cards }) {
   );
 }
 
-export default CardList;
+CardList.propTypes = {
+  title: PropTypes.string.isRequired,
+  cards: PropTypes.arrayOf(PropTypes.shape(Card.propTypes)),
+};

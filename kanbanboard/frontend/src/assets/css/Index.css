@@ -23,7 +23,6 @@ ul {
   margin: 0;
 }
 
-:global(#root),
-:global(.App) {
+:global(#root) {
   height: 100%;
 }

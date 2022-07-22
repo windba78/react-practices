@@ -7,16 +7,21 @@ function KanbanBoard() {
   return (
     <div className={styles.KanbanBoard}>
       <CardList
-        title={"ToDo"}
-        cards={cards.filter((e) => e.status === "ToDo")}
+        key="ToDo"
+        title="ToDo"
+        cards={cards.filter((card) => card.status == "ToDo")}
       />
+
       <CardList
-        title={"Doing"}
-        cards={cards.filter((e) => e.status === "Doing")}
+        key="Doing"
+        title="Doing"
+        cards={cards.filter((card) => card.status == "Doing")}
       />
+
       <CardList
-        title={"Done"}
-        cards={cards.filter((e) => e.status === "Done")}
+        key="Done"
+        title="Done"
+        cards={cards.filter((card) => card.status == "Done")}
       />
     </div>
   );
