@@ -7,7 +7,11 @@ const RegisterForm = ({ callback }) => {
       className={styles.RegisterForm}
       onSubmit={(e) => {
         e.preventDefault();
-        callback(e.target.email.value);
+        callback({
+          firstName: e.target.firstName.value,
+          lastName: e.target.lastName.value,
+          email: e.target.email.value,
+        });
       }}
     >
       <input
