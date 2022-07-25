@@ -10,7 +10,7 @@ export default function Task({ no, name, done, notifyChangeTaskDone }) {
       <input
         type="checkbox"
         checked={checked}
-        onChange={(e) => setChecked((checked) => !checked)}
+        onChange={() => setChecked((checked) => !checked)}
       />
       {name}
       <a href="#" className={styles.Task__remove} />
