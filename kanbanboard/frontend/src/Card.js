@@ -21,14 +21,10 @@ export default function Card({ no, title, description, status, tasks }) {
       >
         {title}
       </div>
-      {showDetail ? (
-        <div className="Card__Details">
-          {description}
-          <TaskList tasks={tasks} />
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className="Card__Details">
+        {description}
+        {showDetail ? <TaskList tasks={tasks} /> : null}
+      </div>
     </div>
   );
 }
