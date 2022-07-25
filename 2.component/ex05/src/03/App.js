@@ -6,10 +6,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hours: 12,
-      minutes: 12,
-      seconds: 30,
-      session: "am",
+      date: new Date(),
     };
   }
 
@@ -18,12 +15,36 @@ export default class App extends Component {
       <div className="clock-display">
         <h2>ex05 - Component LifeCycle Practice</h2>
         <Clock
-          hours={this.state.hours}
-          minutes={this.state.minutes}
-          seconds={this.state.seconds}
-          session={this.state.session}
+          hours={
+            this.state.date.getHours() > 12
+              ? this.state.date.getHours() - 12
+              : this.state.date.getHours()
+          }
+          minutes={
+            this.state.date.getMinutes() < 10
+              ? "0" + this.state.date.getMinutes()
+              : this.state.date.getMinutes()
+          }
+          seconds={
+            this.state.date.getSeconds() < 10
+              ? "0" + this.state.date.getSeconds()
+              : this.state.date.getSeconds()
+          }
+          session={this.state.date.getHours() > 12 ? "pm" : "am"}
         />
       </div>
     );
+  }
+
+  tick() {
+    this.setState({ date: new Date() });
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => this.tick(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
   }
 }
