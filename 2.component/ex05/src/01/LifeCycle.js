@@ -12,6 +12,7 @@ export default class LifeCircle extends Component {
   }
 
   /**
+   *
    *  props로 받아온 값을 state에 동기화 한다.[react v16.3]
    */
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -24,6 +25,7 @@ export default class LifeCircle extends Component {
   }
 
   /**
+   *
    *  props state을 변경 했을 때, re-rendering 여부(반환값 true: 한다. false: 안한다)를 결정한다.
    *  현재 데이터: this.props, this.state
    *  변경 데이터: nextProps, nextState
@@ -49,6 +51,7 @@ export default class LifeCircle extends Component {
   }
 
   /**
+   *
    *  render 메소드 호출 후, DOM에 변화를 반영하기 직전에 호출 [react v16.3]
    *  반환 값은 다음 메소드 componentDidUpdate()의 세번째 파라미터(snapshot)로 전달.
    *  변경 전의 props, state 접근이 가능하다.
@@ -64,6 +67,7 @@ export default class LifeCircle extends Component {
   }
 
   /**
+   *
    *  DOM 업데이트가 끝난 직후 호출 DOM 작업이 가능하다.
    *  변경 전의 state 값과 props값에 접근 가능
    */
@@ -83,13 +87,8 @@ export default class LifeCircle extends Component {
   }
 
   /**
-   * 컴포넌트 생성을 마치고 첫 렌더링 작업이 끝난 후!
-   * 다른 자바스크립트 라이브러리 또는 프레임워크 함수 호출 또는
-   * 1. 이벤트 등록
-   * 2. 타이머 설정
-   * 3. 네트워크 통신
-   * 등을 할 수 있다.
-   */
+        이벤트 등록, 타이머 시작, 통신(AJAX)
+     */
   componentDidMount() {
     console.log("[MOUNT04]: componentDidMount()");
   }
