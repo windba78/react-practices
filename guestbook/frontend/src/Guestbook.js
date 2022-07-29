@@ -17,31 +17,30 @@ export default function Guestbook() {
     console.log("!!!!!!!!!!!--------> UPDATE!!!!!");
   });
 
-  const notifyMessage = {
-    delete: function (no) {
-      setMessages(messages.filter((message) => message.no != no));
-    },
-    add: async function (message) {
-      const response = await fetch("/api/guestbook", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(message),
-      });
+  const deleteMessage = function (no) {
+    setMessages(messages.filter((message) => message.no != no));
+  };
 
-      if (!response.ok) {
-        throw new Error(`${response.status} ${response.statusText}`);
-      }
+  const addMessage = async function (message) {
+    const response = await fetch("/api/guestbook", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(message),
+    });
 
-      const json = await response.json();
-      if (json.result !== "success") {
-        throw json.message;
-      }
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
 
-      setMessages([json.data, ...messages]);
-    },
+    const json = await response.json();
+    if (json.result !== "success") {
+      throw json.message;
+    }
+
+    setMessages([json.data, ...messages]);
   };
 
   const fetchMessage = async function () {
@@ -100,8 +99,8 @@ export default function Guestbook() {
       <div ref={innerRef}>
         <div className={styles.Guestbook}>
           <h1>방명록</h1>
-          <WriteForm notifyMessage={notifyMessage} />
-          <MessageList messages={messages} notifyMessage={notifyMessage} />
+          <WriteForm callback={addMessage} />
+          <MessageList messages={messages} callback={deleteMessage} />
         </div>
       </div>
     </div>

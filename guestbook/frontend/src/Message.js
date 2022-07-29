@@ -1,26 +1,32 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-import styles from './assets/scss/Message.scss';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import styles from "./assets/scss/Message.scss";
 
-export default function Message({no, name, message, notifyMessage}) {
-    return (
-        <li className={styles.Message}>
-            <strong>{name}</strong>
-            <p>
-                {message && message.split('\n').map((line, index) => index > 0 ?
-                    <span key={`${no}-${index}`}>
-                        <br/>
-                        {line}
-                    </span> : line)}
-            </p>
-            <strong/>
-            <a onClick={() => notifyMessage(no)}>삭제</a>
-        </li>
-    );
+export default function Message({ no, name, message, callback }) {
+  return (
+    <li className={styles.Message}>
+      <strong>{name}</strong>
+      <p>
+        {message &&
+          message.split("\n").map((line, index) =>
+            index > 0 ? (
+              <span key={`${no}-${index}`}>
+                <br />
+                {line}
+              </span>
+            ) : (
+              line
+            )
+          )}
+      </p>
+      <strong />
+      <a onClick={() => callback(no)}>삭제</a>
+    </li>
+  );
 }
 
 Message.propTypes = {
-    no: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    message: PropTypes.string.isRequired
-}
+  no: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
