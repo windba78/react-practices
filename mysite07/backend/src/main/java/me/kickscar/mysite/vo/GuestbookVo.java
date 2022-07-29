@@ -12,5 +12,5 @@ public class GuestbookVo {
 	private String name;
 	private String password;
 	private String regDate;
-	private String message;
+	private String content;
 }
