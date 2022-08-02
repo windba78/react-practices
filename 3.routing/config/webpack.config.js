@@ -1,9 +1,9 @@
 const path = require("path");
 
-module.exports = function () {
+module.exports = function (env) {
   return {
     mode: "development",
-    entry: path.resolve(`src/index.js`),
+    entry: path.resolve(`src/${env.src}/index.js`),
     output: {
       path: path.resolve("public"),
       filename: "main.js",
@@ -42,9 +42,6 @@ module.exports = function () {
     devServer: {
       host: "0.0.0.0",
       port: 9090,
-      proxy: {
-        "/api": "http://localhost:8080",
-      },
       liveReload: true,
       hot: true,
       compress: true,
