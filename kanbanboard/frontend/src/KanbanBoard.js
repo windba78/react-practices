@@ -1,9 +1,33 @@
-import React from "react";
-import styles from "./assets/scss/KanbanBoard.scss";
+import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
-import cards from "./assets/json/data.json";
+import styles from "./assets/css/KabanBoard.css";
 
-function KanbanBoard() {
+export default function KanbanBoard() {
+  const [cards, setCards] = useState([]);
+  useEffect(async () => {
+    try {
+      const response = await fetch("/api/card", {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+
+      const json = await response.json();
+      if (json.result !== "success") {
+        throw new Error(`${json.result} ${json.message}`);
+      }
+
+      setCards(json.data);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, []);
+
   return (
     <div className={styles.KanbanBoard}>
       <CardList
@@ -26,5 +50,3 @@ function KanbanBoard() {
     </div>
   );
 }
-
-export default KanbanBoard;

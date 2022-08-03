@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
-import styles from "./assets/scss/CardList.scss";
+import styles from "./assets/css/CardList.css";
 
 export default function CardList({ title, cards }) {
   return (
@@ -14,7 +14,6 @@ export default function CardList({ title, cards }) {
           title={card.title}
           description={card.description}
           status={card.status}
-          tasks={card.tasks}
         />
       ))}
     </div>
