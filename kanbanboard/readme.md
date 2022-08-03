@@ -1,4 +1,16 @@
 ## backend
+#### 테스트
+eclipse Ctrl + F11 (IDE run)
+
+#### 빌드
+```sh
+$ mvn -f kanbanboard/backend exec:exec clean package
+```
+1. 결과: kanbanboard/backend/target/kanbanboard07.jar
+2. 실행
+  ```sh
+  $ java -Dspring.profiles.active=production -jar kanbanboard/backend/target/kanbanboard07.jar
+  ```
 
 ## frontend
 #### 설치
