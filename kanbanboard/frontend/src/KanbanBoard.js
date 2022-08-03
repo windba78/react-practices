@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import CardList from "./CardList";
-import styles from "./assets/css/KabanBoard.css";
+import styles from "./assets/scss/KanbanBoard.scss";
 
 export default function KanbanBoard() {
   const [cards, setCards] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
+    fetchCard();
+  }, []);
+
+  const fetchCard = async () => {
     try {
       const response = await fetch("/api/card", {
         method: "get",
@@ -26,7 +30,7 @@ export default function KanbanBoard() {
     } catch (err) {
       console.log(err.message);
     }
-  }, []);
+  };
 
   return (
     <div className={styles.KanbanBoard}>

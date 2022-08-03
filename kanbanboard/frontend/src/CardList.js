@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
-import styles from "./assets/css/CardList.css";
+import styles from "./assets/scss/CardList.scss";
 
 export default function CardList({ title, cards }) {
   return (
