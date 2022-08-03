@@ -1,0 +1,30 @@
+## backend
+
+## frontend
+#### 설치
+```sh
+$ npm i -D webpack webpack-cli webpack-dev-server style-loader css-loader node-sass sass-loader babel-loader @babel/core @babel/cli @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime @babel/plugin-syntax-throw-expressions
+$ npm i react react-dom react-router react-router-dom react-addons-update prop-types
+```
+
+#### 설정
+1. config/babel.config.json
+2. config/webpack.config.js
+
+#### npm 스크립팅
+```json
+  "scripts": {
+    "start": "npx webpack serve --config config/webpack.config.js --progress --mode development",
+    "build": "npx webpack --config config/webpack.config.js --mode production"
+  }
+```
+
+#### 테스트
+```sh
+$ npm start
+```
+
+#### 빌드
+```sh
+$ npm run build
+```

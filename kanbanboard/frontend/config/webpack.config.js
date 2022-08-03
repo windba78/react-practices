@@ -2,11 +2,11 @@ const path = require("path");
 
 module.exports = function () {
   return {
-    mode: "development",
+    mode: "none",
     entry: path.resolve(`src/index.js`),
     output: {
-      path: path.resolve("public"),
-      filename: "main.js",
+      path: path.resolve("../backend/src/main/resources"),
+      filename: "assets/js/main.js",
       assetModuleFilename: "assets/images/[hash][ext]",
     },
     module: {
@@ -48,6 +48,7 @@ module.exports = function () {
       liveReload: true,
       hot: true,
       compress: true,
+      historyApiFallback: true,
     },
   };
 };
