@@ -27,7 +27,7 @@ $ npm i react react-dom react-router react-router-dom react-addons-update prop-t
 ```json
   "scripts": {
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development",
-    "build": "npx webpack --config config/webpack.config.js --mode production"
+    "build": "npm install && npx webpack --config config/webpack.config.js --mode production"
   }
 ```
 
