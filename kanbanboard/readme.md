@@ -8,9 +8,51 @@ $ mvn -f kanbanboard/backend exec:exec clean package
 ```
 1. 결과: kanbanboard/backend/target/kanbanboard07.jar
 2. 실행
-  ```sh
-  $ java -Dspring.profiles.active=production -jar kanbanboard/backend/target/kanbanboard07.jar
-  ```
+```sh
+$ java -Dspring.profiles.active=production -jar kanbanboard/backend/target/kanbanboard07.jar
+```
+
+#### ssh 연결(ssh key 사용하기)
+1. key 생성하기
+```
+# ssh-keygen -t rsa -b 2048 -m PEM -C "windba78@naver.com"
+```
+
+2. 생성확인
+  - id_rsa: private key
+  - id_rsa.pub: public key
+
+3. 공개키(id_rsa.pub) 서버 설치
+```
+# mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+```
+
+4. ssh(client) 연결 테스트
+```
+$ ssh -i /d/.../id_rsa.pem root@serverIP
+```
+
+5. ssh 연결 환경 설정(~/.ssh/environment)
+```
+# vi ~/.ssh/environment
+```
+PATH=/usr/local/douzone/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/douzone/java/bin:/usr/local/douzone/maven/bin:/usr/local/douzone/mariadb/bin:/usr/local/douzone/python/bin:/usr/local/douzone/node/bin:/root/bin
+
+```
+$ vi /etc/ssh/sshd_config
+```
+PermitUserEnvironment yes
+
+```
+$ systemctl restart sshd
+```
+
+6. jenkins ssh server 설정
+  1) Publish over SSH 플러그인 설치
+  2) Publish over SSH 플러그인으로 ssh server 등록하기
+  3) project 빌드 후 조치(post-build action: send build artifacts over SSH) 설정
+    - proj-apps.jar: transfer
+    - launch.sh: transfer + execution
 
 ## frontend
 #### 설치
